@@ -4,5 +4,5 @@ import { getMonthlySummary } from "../controllers/summary.controller.js";
 import { authenticate } from "../middlewares/auth.middleware.js";
 const router = express.Router();
 router.use(authenticate);
-router.get("/monthly", getMonthlySummary);
+router.get("/", getMonthlySummary);
 export default router;

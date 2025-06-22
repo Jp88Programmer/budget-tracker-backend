@@ -8,6 +8,7 @@ export default (sequelize) => {
       primaryKey: true,
     },
     month: { type: DataTypes.STRING },
+    year: { type: DataTypes.STRING },
     amount: { type: DataTypes.FLOAT },
   });
 };
