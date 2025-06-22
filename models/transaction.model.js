@@ -8,6 +8,7 @@ export default (sequelize) => {
       primaryKey: true,
     },
     title: { type: DataTypes.STRING },
+    description: { type: DataTypes.STRING, allowNull: true },
     amount: { type: DataTypes.FLOAT },
     date: { type: DataTypes.DATEONLY },
     type: { type: DataTypes.ENUM("income", "expense") },
