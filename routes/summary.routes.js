@@ -1,8 +1,8 @@
 // routes/summary.routes.js
 import express from "express";
-import { getMonthlySummary } from "../controllers/summary.controller.js";
+import { getSummary } from "../controllers/summary.controller.js";
 import { authenticate } from "../middlewares/auth.middleware.js";
 const router = express.Router();
 router.use(authenticate);
-router.get("/", getMonthlySummary);
+router.get("/", getSummary);
 export default router;
