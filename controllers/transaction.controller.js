@@ -1,4 +1,4 @@
-import { Transaction } from "../models/index.js";
+import { Category, Transaction } from "../models/index.js";
 
 export const createTransaction = async (req, res) => {
   try {
@@ -62,6 +62,17 @@ export const getTransactions = async (req, res) => {
       order: [["date", "DESC"]],
     });
 
+    if (transactions.length > 0) {
+      await Promise.all(
+        transactions.map(async (transaction) => {
+          const category = await Category.findOne({
+            where: { id: transaction.CategoryId },
+          });
+          transaction.category = category;
+        })
+      );
+    }
+
     res.status(201).json({
       message: "Transactions fetched successfully",
       more: transactions.length == limit,
@@ -71,13 +82,26 @@ export const getTransactions = async (req, res) => {
         transactions.length == 0
           ? []
           : transactions.map(
-              ({ title, amount, date, type, UserId, CategoryId }) => ({
+              ({
+                id,
                 title,
+                description,
+                amount,
+                date,
+                type,
+                UserId,
+                CategoryId,
+                category,
+              }) => ({
+                id,
+                title,
+                description,
                 amount,
                 date,
                 type,
                 userId: UserId,
                 categoryId: CategoryId,
+                category: category ? category.name : null,
               })
             ),
     });
