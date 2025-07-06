@@ -2,6 +2,7 @@
 
 This project is a backend REST API for a budget tracking application. It allows users to manage their budgets, transactions, and categories, and provides summary reports. The backend is built with Node.js, Express, Sequelize ORM, and PostgreSQL.
 
+
 ## Features
 
 - User authentication (JWT-based)
@@ -9,6 +10,7 @@ This project is a backend REST API for a budget tracking application. It allows 
 - Set and retrieve monthly budgets
 - Get summary reports for spending and income
 - Secure endpoints with authentication middleware
+
 
 ## REST API & Routing
 
@@ -39,6 +41,7 @@ All API endpoints are prefixed with `/api/`. The main routes are:
   - `GET /api/summary/` — Get income/expense summary for a month or year
 
 All routes (except `/api/auth/*`) require a valid JWT token in the `Authorization` header.
+
 
 ## Installation
 
